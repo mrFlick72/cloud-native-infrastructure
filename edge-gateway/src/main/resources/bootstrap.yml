@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: onlyone-portal-edgeserver
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      fail-fast: true
