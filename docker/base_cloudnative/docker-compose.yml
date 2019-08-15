@@ -5,6 +5,7 @@ services:
     image: mrflick72/eureka-server:lastest
     ports:
       - "8761:8761"
+    restart: always
     environment:
       - server.port=8761
       - eureka.instance.preferIpAddress=true
@@ -16,6 +17,7 @@ services:
     image: mrflick72/configuration-server:lastest
     ports:
       - "8888:8888"
+    restart: always
     environment:
       - server.port=8888
       - spring.profiles.active=native
