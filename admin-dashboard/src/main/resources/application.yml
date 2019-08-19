@@ -1,0 +1,8 @@
+spring:
+  application:
+    name: admin-dashboard
+  cloud:
+    config:
+      discovery:
+        enabled: true
+      fail-fast: true
