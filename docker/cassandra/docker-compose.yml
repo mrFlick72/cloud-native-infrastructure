@@ -1,0 +1,35 @@
+version: '3.1'
+
+services:
+  cassandra-node1:
+    container_name: cassandra-node1
+    image: cassandra
+    volumes:
+      - ${VOLUME_CASSANDRA_NODE1}:/var/lib/cassandra
+    networks:
+      - cassandra
+
+  cassandra-node2:
+    container_name: cassandra-node2
+    image: cassandra
+    volumes:
+      - ${VOLUME_CASSANDRA_NODE2}:/var/lib/cassandra
+    environment:
+      - CASSANDRA_SEEDS=cassandra-node1
+    networks:
+      - cassandra
+
+  cassandra-node3:
+    container_name: cassandra-node3
+    image: cassandra
+    volumes:
+      - ${VOLUME_CASSANDRA_NODE3}:/var/lib/cassandra
+    environment:
+      - CASSANDRA_SEEDS=cassandra-node1
+    networks:
+      - cassandra
+
+
+networks:
+  cassandra:
+    driver: bridge
