@@ -4,6 +4,7 @@ services:
   cassandra-node1:
     container_name: cassandra-node1
     image: cassandra
+    restart: always
     volumes:
       - ${VOLUME_CASSANDRA_NODE1}:/var/lib/cassandra
     networks:
@@ -12,6 +13,7 @@ services:
   cassandra-node2:
     container_name: cassandra-node2
     image: cassandra
+    restart: always
     volumes:
       - ${VOLUME_CASSANDRA_NODE2}:/var/lib/cassandra
     environment:
@@ -22,6 +24,7 @@ services:
   cassandra-node3:
     container_name: cassandra-node3
     image: cassandra
+    restart: always
     volumes:
       - ${VOLUME_CASSANDRA_NODE3}:/var/lib/cassandra
     environment:
