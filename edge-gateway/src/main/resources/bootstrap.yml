@@ -6,3 +6,9 @@ spring:
       discovery:
         enabled: true
       fail-fast: true
+management:
+  metrics:
+    export:
+      prometheus:
+        pushgateway:
+          base-url: localhost:9095

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Only One Portal</title>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="/webjars/bootstrap/4.0.0-1/css/bootstrap.min.css"/>
+
+    <style type="text/css">
+    </style>
+
+</head>
+
+<body>
+
+<div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="#">Navbar</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li id="account" class="nav-item active">
+                    <a class="nav-link" href="#">Account</a>
+                </li>
+                <li id="family-budget" class="nav-item">
+                    <a class="nav-link" href="#">Family Budget</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-12">
+            <div class="embed-responsive embed-responsive-16by9">
+                <iframe id="content"
+                        seamless="seamless"
+                        class="embed-responsive-item"
+                        allowtransparency="true"
+                        allowfullscreen>
+                </iframe>
+            </div>
+        </div>
+        <div class="col-12">
+            <div id="content2"></div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Optional JavaScript -->
+<!-- jQuery first, then Popper.js, then Bootstrap JS -->
+<script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="/webjars/popper.js/1.12.9-1/umd/popper-utils.min.js"></script>
+<script src="/webjars/popper.js/1.12.9-1/umd/popper.min.js"></script>
+<script src="/webjars/bootstrap/4.0.0-1/js/bootstrap.min.js"></script>
+
+
+<script th:inline="javascript">
+    /*<![CDATA[*/
+
+    $("#account").click(function () {
+        // $("#content").attr('src', "/account/site/index.html")
+        $.ajax("/account/site/index.html").done(function (data) {$("#content2").append($(data))})
+
+    });
+
+    $("#family-budget").click(function () {
+        // $("#content").attr('src', "/family-budget/index?choicedMonth=9&year=2019")
+        $.ajax("/family-budget/index?choicedMonth=9&year=2019").done(function (data) {$("#content2").append($(data))})
+    })
+    /*]]>*/
+</script>
+</body>
+</html>
