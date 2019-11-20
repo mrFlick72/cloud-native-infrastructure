@@ -1,4 +1,4 @@
-FROM openjdk:12
+FROM openjdk:11
 
 ADD configuration-server.jar /usr/local/configuration-server/
 

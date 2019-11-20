@@ -1,4 +1,4 @@
-FROM openjdk:12
+FROM openjdk:11
 
 ADD eureka-server.jar /usr/local/eureka-server/
 
