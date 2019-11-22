@@ -1,16 +1,11 @@
 version: 2.1
 jobs:
-  admin-dashboard:
+  build:
     docker:
       - image: circleci/openjdk:11-jdk-stretch
     steps:
       - checkout
       - setup_remote_docker
+      - run: mvn clean install -f admin-dashboard/pom.xml
       - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
-      - run: mvn clean install docker:build docker:push -f admin-dashboard/pom.xml
-
-
-workflows:
-  build_and_test:
-    jobs:
-      - admin-dashboard
+      - run: mvn docker:build docker:push -f admin-dashboard/pom.xml
