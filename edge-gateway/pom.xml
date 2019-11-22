@@ -73,6 +73,7 @@
                 <configuration>
                     <imageName>mrflick72/${project.build.finalName}</imageName>
                     <imageTags>
+                        <imageTag>${pom.version}</imageTag>
                         <imageTag>latest</imageTag>
                     </imageTags>
                     <dockerDirectory>src/main/docker</dockerDirectory>

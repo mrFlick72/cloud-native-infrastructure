@@ -95,7 +95,8 @@
                 <configuration>
                     <imageName>mrflick72/${project.build.finalName}:latest</imageName>
                      <imageTags>
-                        <imageTag>latest</imageTag>
+                         <imageTag>${pom.version}</imageTag>
+                         <imageTag>latest</imageTag>
                     </imageTags>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
