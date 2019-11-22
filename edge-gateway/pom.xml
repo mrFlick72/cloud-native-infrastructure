@@ -5,18 +5,18 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>2.1.7.RELEASE</version>
+        <version>2.1.10.RELEASE</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>it.valeriovaudi.onlyoneportal</groupId>
     <artifactId>edge-gateway</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>edge-gateway</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
-        <spring-cloud.version>Greenwich.SR2</spring-cloud.version>
+        <java.version>1.11</java.version>
+        <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -71,7 +71,11 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <imageName>mrflick72/${project.build.finalName}:latest</imageName>
+                    <imageName>mrflick72/${project.build.finalName}:lastest</imageName>
+                    <imageTags>
+                        <imageTag>${pom.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>

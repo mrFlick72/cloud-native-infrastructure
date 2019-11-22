@@ -7,6 +7,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: mvn clean install -f admin-dashboard/pom.xml
+      - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+      - run: mvn docker:build docker:push -f admin-dashboard/pom.xml
 
 
   configuration-server:
@@ -16,6 +18,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: mvn clean install -f configuration-server/pom.xml
+      - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+      - run: mvn docker:build docker:push -f admin-dashboard/pom.xml
 
   edge-gateway:
     docker:
@@ -24,7 +28,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: mvn clean install -f edge-gateway/pom.xml
-
+      - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+      - run: mvn docker:build docker:push -f admin-dashboard/pom.xml
 
   eureka-server:
     docker:
@@ -33,7 +38,8 @@ jobs:
       - checkout
       - setup_remote_docker
       - run: mvn clean install -f eureka-server/pom.xml
-
+      - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
+      - run: mvn docker:build docker:push -f admin-dashboard/pom.xml
 
 workflows:
   build_and_test:

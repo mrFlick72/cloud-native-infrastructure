@@ -10,14 +10,14 @@
     </parent>
     <groupId>it.valeriovaudi</groupId>
     <artifactId>admin-dashboard</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>1.0.0</version>
     <name>admin-dashboard</name>
     <description>Demo project for Spring Boot</description>
 
     <properties>
-        <java.version>1.8</java.version>
+        <java.version>1.11</java.version>
         <spring-boot-admin.version>2.1.6</spring-boot-admin.version>
-        <spring-cloud.version>Greenwich.SR3</spring-cloud.version>
+        <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
     </properties>
 
     <dependencies>
@@ -91,7 +91,11 @@
                 <artifactId>docker-maven-plugin</artifactId>
                 <version>1.2.1</version>
                 <configuration>
-                    <imageName>mrflick72/${project.build.finalName}:latest</imageName>
+                    <imageName>mrflick72/${project.build.finalName}:lastest</imageName>
+                    <imageTags>
+                        <imageTag>${pom.version}</imageTag>
+                        <imageTag>latest</imageTag>
+                    </imageTags>
                     <dockerDirectory>src/main/docker</dockerDirectory>
                     <resources>
                         <resource>
