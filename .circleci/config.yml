@@ -6,7 +6,6 @@ jobs:
     steps:
       - checkout
       - setup_remote_docker
-      - run: mvn clean install -f admin-dashboard/pom.xml
+      - run: mvn clean install docker:build -f admin-dashboard/pom.xml
       - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
-      - run: mvn docker:build -f admin-dashboard/pom.xml
-      - run: mvn docker:push -f admin-dashboard/pom.xml
+      - run: docker push mrflick72/admin-dashboard:latest
