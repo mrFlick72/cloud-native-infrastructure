@@ -8,7 +8,7 @@ jobs:
       - setup_remote_docker
       - run: mvn clean install -f admin-dashboard/pom.xml
       - run: docker login -u $DOCKER_HUB_USERNAME --password $DOCKER_HUB_PASSWORD
-      - run: mvn docker:build docker:push -f admin-dashboard/pom.xml
+      - run: mvn docker:build docker:push
 
 
   configuration-server:
