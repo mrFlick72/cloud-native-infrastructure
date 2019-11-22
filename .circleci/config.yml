@@ -1,0 +1,44 @@
+version: 2.1
+jobs:
+  admin-dashboard:
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: mvn clean install -f admin-dashboard/pom.xml
+
+
+  configuration-server:
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: mvn clean install -f configuration-server/pom.xml
+
+  edge-gateway:
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: mvn clean install -f edge-gateway/pom.xml
+
+
+  eureka-server:
+    docker:
+      - image: circleci/openjdk:11-jdk-stretch
+    steps:
+      - checkout
+      - setup_remote_docker
+      - run: mvn clean install -f eureka-server/pom.xml
+
+
+workflows:
+  build_and_test:
+    jobs:
+      - admin-dashboard
+      - configuration-server
+      - edge-gateway
+      - eureka-server
