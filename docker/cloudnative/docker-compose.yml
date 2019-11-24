@@ -2,7 +2,7 @@ version: '3.1'
 
 services:
   eureka:
-    image: mrflick72/eureka-server:lastest
+    image: mrflick72/eureka-server:latest
     ports:
       - "8761:8761"
     restart: always
@@ -14,7 +14,7 @@ services:
       - discovery
 
   configuration-server:
-    image: mrflick72/configuration-server:lastest
+    image: mrflick72/configuration-server:latest
     ports:
       - "8888:8888"
     restart: always
