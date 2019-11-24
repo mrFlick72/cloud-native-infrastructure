@@ -16,7 +16,7 @@
 
     <properties>
         <javax-jaxb.version>2.3.0</javax-jaxb.version>
-        <java.version>11</java.version>
+        <java.version>12</java.version>
         <spring-cloud.version>Greenwich.SR4</spring-cloud.version>
     </properties>
 
