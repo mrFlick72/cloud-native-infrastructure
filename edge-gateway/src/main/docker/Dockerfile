@@ -1,6 +1,8 @@
-FROM openjdk:11
+FROM openjdk:12
 
 ADD onlyone-portal-edgeserver.jar /usr/local/onlyone-portal-edgeserver/
+
+VOLUME /var/log/onlyone-portal
 
 WORKDIR /usr/local/onlyone-portal-edgeserver/
 

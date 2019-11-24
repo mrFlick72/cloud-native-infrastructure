@@ -1,6 +1,8 @@
-FROM openjdk:11
+FROM openjdk:12
 
 ADD admin-dashboard.jar /usr/local/admin-dashboard/
+
+VOLUME /var/log/onlyone-portal
 
 WORKDIR /usr/local/admin-dashboard/
 

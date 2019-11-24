@@ -1,6 +1,8 @@
-FROM openjdk:11
+FROM openjdk:12
 
 ADD configuration-server.jar /usr/local/configuration-server/
+
+VOLUME /var/log/onlyone-portal
 
 WORKDIR /usr/local/configuration-server/
 
