@@ -24,6 +24,14 @@ services:
     networks:
       - database
 
+  mongo:
+    image: mongo
+    restart: always
+    ports:
+      - "27017:27017"
+    volumes:
+      - "${MONGO_VOLUME}:/var/lib/mongodb"
+
   redis:
     image: redis
     restart: always
