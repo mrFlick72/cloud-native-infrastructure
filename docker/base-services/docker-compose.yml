@@ -1,0 +1,29 @@
+version: "3.7"
+
+services:
+  i18n-messages:
+    image: mrflick72/i18n-messages:latest
+    ports:
+      - "5040:5040"
+      - "5041:5041"
+      - "5042:5042"
+    restart: always
+    environment:
+      - spring.profiles.active=local
+      - eureka.instance.preferIpAddress=true
+      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+      - spring.redis.host=redis
+      - spring.rabbitmq.host=rabbitmq
+    networks:
+      - cloudnative_discovery
+      - infrastructure_messaging
+      - infrastructure_in_memory_storage
+
+
+networks:
+  cloudnative_discovery:
+    external: true
+  infrastructure_messaging:
+    external: true
+  infrastructure_in_memory_storage:
+    external: true
