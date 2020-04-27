@@ -11,7 +11,7 @@ services:
     environment:
       - spring.profiles.active=local
       - eureka.instance.preferIpAddress=true
-      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
       - spring.redis.host=redis
       - spring.rabbitmq.host=rabbitmq
     networks:

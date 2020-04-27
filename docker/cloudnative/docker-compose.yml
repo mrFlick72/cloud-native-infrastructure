@@ -1,15 +1,46 @@
 version: '3.1'
 
 services:
-  eureka:
+  eureka1:
     image: mrflick72/eureka-server:latest
     ports:
       - "8761:8761"
     restart: always
     environment:
       - server.port=8761
+      - eureka.instance.hostname=eureka1
+      - eureka.client.registerWithEureka=false
+      - eureka.client.fetchRegistry=false
       - eureka.instance.preferIpAddress=true
-      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+    networks:
+      - discovery
+  eureka2:
+    image: mrflick72/eureka-server:latest
+    ports:
+      - "8762:8762"
+    restart: always
+    environment:
+      - server.port=8762
+      - eureka.instance.hostname=eureka2
+      - eureka.client.registerWithEureka=false
+      - eureka.client.fetchRegistry=false
+      - eureka.instance.preferIpAddress=true
+      - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+    networks:
+      - discovery
+  eureka3:
+    image: mrflick72/eureka-server:latest
+    ports:
+      - "8763:8763"
+    restart: always
+    environment:
+      - server.port=8763
+      - eureka.instance.hostname=eureka3
+      - eureka.client.registerWithEureka=false
+      - eureka.client.fetchRegistry=false
+      - eureka.instance.preferIpAddress=true
+      - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
     networks:
       - discovery
 
@@ -23,7 +54,7 @@ services:
       - spring.profiles.active=native,local
       - eureka.instance.preferIpAddress=true
       - spring.cloud.config.server.native.searchLocations=file:///usr/local/configuration-server/config
-      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
     volumes:
       - "${LOCAL_REPO}:/usr/local/configuration-server/config"
     networks:
@@ -37,7 +68,7 @@ services:
     environment:
       - spring.profiles.active=local
       - eureka.instance.preferIpAddress=true
-      - eureka.client.serviceUrl.defaultZone=http://eureka:8761/eureka/
+      - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
     networks:
       - discovery
 
