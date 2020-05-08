@@ -62,13 +62,21 @@ services:
 
   onlyone-portal-edgeserver:
     image: mrflick72/onlyone-portal-edgeserver:latest
-    ports:
-      - "8080:8080"
     restart: always
     environment:
       - spring.profiles.active=local
       - eureka.instance.preferIpAddress=true
       - eureka.client.serviceUrl.defaultZone=http://eureka1:8761/eureka/,http://eureka2:8762/eureka/,http://eureka3:8763/eureka/
+    networks:
+      - discovery
+
+  envoy:
+    image: envoyproxy/envoy:v1.14.1
+    restart: always
+    ports:
+      - 80:80
+    volumes:
+      - ./envoy.yaml:/etc/envoy/envoy.yaml
     networks:
       - discovery
 
