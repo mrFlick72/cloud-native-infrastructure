@@ -12,7 +12,7 @@ services:
       - messaging
   elastic-search:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
-    privileged: true
+    restart: always
     environment:
       - discovery.type=single-node
       - cluster.name=docker-cluster
